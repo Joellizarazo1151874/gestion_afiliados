@@ -1,0 +1,17 @@
+{
+    "name": "gestionusuarios/organizacion-discapacitados",
+    "description": "Sistema de gestión de usuarios para la organización Familia unida por la discapacidad",
+    "type": "project",
+    "require": {
+        "php": ">=7.4",
+        "phpoffice/phpspreadsheet": "^1.29"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "config": {
+        "optimize-autoloader": true
+    }
+} 
