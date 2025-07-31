@@ -3,8 +3,10 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 require_once '../controlador/UsuarioController.php';
+require_once '../controlador/DocumentoController.php';
 
 $usuarioController = new UsuarioController();
+$documentoController = new DocumentoController();
 
 // Verificar si es una petición POST o GET con acción
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -33,6 +35,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         // Crear nuevo usuario
         $resultado = $usuarioController->crearUsuario($datos);
+        
+        // Si el usuario se creó exitosamente y hay documentos, procesarlos
+        if ($resultado['success'] && isset($_FILES['documentos']) && !empty($_FILES['documentos']['name'][0])) {
+            $usuario_id = $resultado['usuario_id'] ?? null;
+            if ($usuario_id) {
+                $documentos_resultado = $documentoController->procesarCargaDocumentos($usuario_id, $_FILES['documentos']);
+                if (!$documentos_resultado['exito']) {
+                    $resultado['message'] .= ' - ' . $documentos_resultado['mensaje'];
+                } else {
+                    $resultado['message'] .= ' - ' . $documentos_resultado['mensaje'];
+                }
+            }
+        }
     }
 
     // Redirigir con mensaje

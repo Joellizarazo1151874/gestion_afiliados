@@ -1,0 +1,169 @@
+/* Estilos del menú móvil para toda la aplicación */
+
+/* Responsive para móviles */
+@media (max-width: 768px) {
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 280px;
+        z-index: 1050;
+        transition: left 0.3s ease;
+    }
+    
+    .sidebar.show {
+        left: 0;
+    }
+    
+    .sidebar-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 1040;
+        display: none;
+    }
+    
+    .sidebar-overlay.show {
+        display: block;
+    }
+    
+    #sidebarToggle {
+        background: linear-gradient(135deg, #FFD700 0%, #DC143C 100%);
+        border: none;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        transition: all 0.3s ease;
+    }
+    
+    #sidebarToggle:hover {
+        transform: scale(1.1);
+        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+    
+    .main-content {
+        margin-left: 0 !important;
+        width: 100% !important;
+        padding: 1rem;
+    }
+    
+    .container-fluid {
+        padding: 0;
+    }
+    
+    .card {
+        margin-bottom: 1rem;
+    }
+    
+    .table-responsive {
+        font-size: 0.85rem;
+    }
+    
+    .btn-sm {
+        padding: 0.25rem 0.5rem;
+        font-size: 0.75rem;
+    }
+    
+    .stats-card {
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+    
+    .stats-card .card-body {
+        padding: 1rem 0.5rem;
+    }
+    
+    .stats-card h3 {
+        font-size: 1.5rem;
+    }
+    
+    .stats-card p {
+        font-size: 0.8rem;
+    }
+    
+    .filters-section {
+        padding: 1rem 0.5rem;
+    }
+    
+    .filters-section .row > div {
+        margin-bottom: 0.5rem;
+    }
+    
+    .modal-dialog {
+        margin: 0.5rem;
+    }
+    
+    .modal-body {
+        padding: 1rem;
+    }
+    
+    .alert {
+        margin-bottom: 0.5rem;
+    }
+    
+    .form-control, .form-select {
+        font-size: 0.9rem;
+    }
+    
+    .btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+    
+    .navbar-brand {
+        font-size: 1.1rem;
+    }
+    
+    /* Estilos para el logo en móviles */
+    .logo-sidebar {
+        max-width: 60px !important;
+    }
+    
+    /* Estilos para tarjetas móviles */
+    .user-card-mobile {
+        border: 1px solid #e9ecef;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        transition: all 0.3s ease;
+    }
+    
+    .user-card-mobile:hover {
+        box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        transform: translateY(-2px);
+    }
+    
+    .user-card-mobile .card-body {
+        padding: 1rem;
+    }
+    
+    .user-card-mobile h6 {
+        color: #495057;
+        font-weight: 600;
+    }
+    
+    .user-card-mobile .badge {
+        font-size: 0.7rem;
+    }
+    
+    .user-card-mobile .btn-sm {
+        padding: 0.25rem 0.5rem;
+        font-size: 0.75rem;
+    }
+}
+
+/* Mejoras para tablets */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .sidebar {
+        width: 250px;
+    }
+    
+    .main-content {
+        margin-left: 250px !important;
+        width: calc(100% - 250px) !important;
+    }
+    
+    .table-responsive {
+        font-size: 0.9rem;
+    }
+} 

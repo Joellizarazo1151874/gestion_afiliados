@@ -1,0 +1,24 @@
+# Proteger la carpeta de uploads
+<Files "*.php">
+    Order Allow,Deny
+    Deny from all
+</Files>
+
+<Files "*.html">
+    Order Allow,Deny
+    Deny from all
+</Files>
+
+<Files "*.htm">
+    Order Allow,Deny
+    Deny from all
+</Files>
+
+# Permitir solo archivos de documentos
+<FilesMatch "\.(pdf|jpg|jpeg|png|doc|docx)$">
+    Order Allow,Deny
+    Allow from all
+</FilesMatch>
+
+# Deshabilitar ejecución de scripts
+Options -ExecCGI 

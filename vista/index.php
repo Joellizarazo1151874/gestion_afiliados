@@ -429,6 +429,192 @@ if (isset($_GET['logout'])) {
             border-color: #32CD32 !important;
             color: white !important;
         }
+        
+        /* Estilos para botones de carga de archivos modernos */
+        .file-upload-wrapper {
+            position: relative;
+            margin-bottom: 1rem;
+        }
+        
+        .file-upload-input {
+            position: absolute;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+            z-index: 2;
+        }
+        
+        .file-upload-label {
+            display: block;
+            width: 100%;
+            min-height: 120px;
+            border: 3px dashed #FFD700;
+            border-radius: 15px;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(220, 20, 60, 0.1) 100%);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .file-upload-label:hover {
+            border-color: #DC143C;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.2) 0%, rgba(220, 20, 60, 0.2) 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
+        }
+        
+        .file-upload-label.dragover {
+            border-color: #32CD32;
+            background: linear-gradient(135deg, rgba(50, 205, 50, 0.2) 0%, rgba(34, 139, 34, 0.2) 100%);
+            transform: scale(1.02);
+        }
+        
+        .file-upload-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1rem;
+            text-align: center;
+            color: #495057;
+        }
+        
+        .file-upload-text {
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .file-upload-hint {
+            font-size: 0.85rem;
+            color: #6c757d;
+        }
+        
+        .file-preview {
+            margin-top: 0.5rem;
+            padding: 0.5rem;
+            border-radius: 8px;
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            display: none;
+        }
+        
+        .file-preview.show {
+            display: block;
+        }
+        
+        .file-preview-content {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .file-preview-icon {
+            font-size: 1.5rem;
+            color: #28a745;
+        }
+        
+        .file-preview-info {
+            flex: 1;
+        }
+        
+        .file-preview-name {
+            font-weight: 600;
+            color: #495057;
+            margin-bottom: 0.25rem;
+        }
+        
+        .file-preview-size {
+            font-size: 0.8rem;
+            color: #6c757d;
+        }
+        
+        .file-preview-remove {
+            background: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .file-preview-remove:hover {
+            background: #c82333;
+            transform: scale(1.1);
+        }
+        
+        /* Animación de carga */
+        .file-upload-label.loading {
+            pointer-events: none;
+        }
+        
+        .file-upload-label.loading::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            animation: loading 1.5s infinite;
+        }
+        
+        @keyframes loading {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        
+        /* Estilos para descripciones de documentos */
+        .document-description {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(220, 20, 60, 0.05) 100%);
+            border-left: 4px solid #FFD700;
+            padding: 0.75rem;
+            margin-top: 0.5rem;
+            border-radius: 0 8px 8px 0;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            color: #495057;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        
+        .document-description strong {
+            color: #DC143C;
+        }
+        
+        .document-description i {
+            color: #32CD32;
+        }
+        
+        /* Responsive para móviles */
+        @media (max-width: 768px) {
+            .file-upload-label {
+                min-height: 100px;
+            }
+            
+            .file-upload-content {
+                padding: 1.5rem 0.5rem;
+            }
+            
+            .file-upload-text {
+                font-size: 0.9rem;
+            }
+            
+            .file-upload-hint {
+                font-size: 0.8rem;
+            }
+            
+            .document-description {
+                font-size: 0.85rem;
+                padding: 0.5rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -458,10 +644,6 @@ if (isset($_GET['logout'])) {
                             <i class="fas fa-tachometer-alt me-2"></i>
                             Dashboard
                         </a>
-                        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#modalNuevoUsuario">
-                            <i class="fas fa-plus me-2"></i>
-                            Nuevo Usuario
-                        </a>
                         <a class="nav-link" href="#" onclick="exportarExcel()">
                             <i class="fas fa-file-excel me-2"></i>
                             Exportar Excel
@@ -469,6 +651,10 @@ if (isset($_GET['logout'])) {
                         <a class="nav-link" href="#" onclick="exportarCSV()">
                             <i class="fas fa-file-csv me-2"></i>
                             Exportar CSV
+                        </a>
+                        <a class="nav-link" href="solicitudes.php">
+                            <i class="fas fa-clipboard-list me-2"></i>
+                            Solicitudes
                         </a>
                         <hr class="my-3">
                         <div class="text-center">
@@ -488,9 +674,7 @@ if (isset($_GET['logout'])) {
                     <!-- Header -->
                     <div class="d-flex justify-content-between align-items-center mb-4">
                         <h2><i class="fas fa-tachometer-alt me-2"></i>Dashboard</h2>
-                        <button class="btn btn-warning btn-action" data-bs-toggle="modal" data-bs-target="#modalNuevoUsuario" style="background: linear-gradient(135deg, #FFD700 0%, #FF8C00 100%); border: none;">
-                            <i class="fas fa-plus me-2"></i>Nuevo Usuario
-                        </button>
+                        
                     </div>
 
                     <!-- Mensajes de éxito/error -->
@@ -734,7 +918,7 @@ if (isset($_GET['logout'])) {
                     </h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                 </div>
-                <form id="formNuevoUsuario" method="POST" action="procesar_usuario.php">
+                <form id="formNuevoUsuario" method="POST" action="procesar_usuario.php" enctype="multipart/form-data">
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-md-6">
@@ -864,6 +1048,338 @@ if (isset($_GET['logout'])) {
                         <div class="mb-3">
                             <label class="form-label">Observaciones</label>
                             <textarea class="form-control" name="observaciones" rows="3"></textarea>
+                        </div>
+                        
+                        <!-- Sección de Documentos -->
+                        <hr class="my-4">
+                        <h6 class="text-warning mb-3">
+                            <i class="fas fa-file-upload me-2"></i>
+                            Documentos Requeridos
+                        </h6>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">
+                                        <span class="badge bg-danger me-2">OBLIGATORIO</span>
+                                        <i class="fas fa-camera me-1"></i>
+                                        Foto tipo carnet del Asociado
+                                    </label>
+                                    <div class="file-upload-wrapper">
+                                        <input type="file" class="file-upload-input" name="documentos[foto_carnet]" accept="image/*,.pdf" required id="foto_carnet">
+                                        <label for="foto_carnet" class="file-upload-label">
+                                            <div class="file-upload-content">
+                                                <i class="fas fa-cloud-upload-alt fa-2x mb-2"></i>
+                                                <span class="file-upload-text">Haz clic para seleccionar archivo</span>
+                                                <span class="file-upload-hint">o arrastra y suelta aquí</span>
+                                            </div>
+                                        </label>
+                                        <div class="file-preview" id="foto_carnet-preview"></div>
+                                    </div>
+                                    <small class="text-muted">Formatos: JPG, PNG, PDF (máx. 5MB)</small>
+                                    <div class="document-description">
+                                        <i class="fas fa-info-circle text-info me-1"></i>
+                                        <strong>Descripción:</strong> Foto tipo carnet del asociado, debe ser una imagen clara del rostro con fondo neutro, similar a una foto de identificación oficial.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">
+                                        <span class="badge bg-danger me-2">OBLIGATORIO</span>
+                                        <i class="fas fa-id-card me-1"></i>
+                                        Cédula del Asociado
+                                    </label>
+                                    <div class="file-upload-wrapper">
+                                        <input type="file" class="file-upload-input" name="documentos[cedula_asociado]" accept="image/*,.pdf" required id="cedula_asociado">
+                                        <label for="cedula_asociado" class="file-upload-label">
+                                            <div class="file-upload-content">
+                                                <i class="fas fa-cloud-upload-alt fa-2x mb-2"></i>
+                                                <span class="file-upload-text">Haz clic para seleccionar archivo</span>
+                                                <span class="file-upload-hint">o arrastra y suelta aquí</span>
+                                            </div>
+                                        </label>
+                                        <div class="file-preview" id="cedula_asociado-preview"></div>
+                                    </div>
+                                    <small class="text-muted">Formatos: JPG, PNG, PDF (máx. 5MB)</small>
+                                    <div class="document-description">
+                                        <i class="fas fa-info-circle text-info me-1"></i>
+                                        <strong>Descripción:</strong> Fotocopia de la cédula de ciudadanía del asociado, ambas caras del documento deben ser visibles y legibles.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">
+                                        <span class="badge bg-danger me-2">OBLIGATORIO</span>
+                                        <i class="fas fa-user me-1"></i>
+                                        Foto cuerpo entero del Asociado
+                                    </label>
+                                    <div class="file-upload-wrapper">
+                                        <input type="file" class="file-upload-input" name="documentos[foto_cuerpo]" accept="image/*,.pdf" required id="foto_cuerpo">
+                                        <label for="foto_cuerpo" class="file-upload-label">
+                                            <div class="file-upload-content">
+                                                <i class="fas fa-cloud-upload-alt fa-2x mb-2"></i>
+                                                <span class="file-upload-text">Haz clic para seleccionar archivo</span>
+                                                <span class="file-upload-hint">o arrastra y suelta aquí</span>
+                                            </div>
+                                        </label>
+                                        <div class="file-preview" id="foto_cuerpo-preview"></div>
+                                    </div>
+                                    <small class="text-muted">Formatos: JPG, PNG, PDF (máx. 5MB)</small>
+                                    <div class="document-description">
+                                        <i class="fas fa-info-circle text-info me-1"></i>
+                                        <strong>Descripción:</strong> Foto de cuerpo entero del asociado, debe mostrar claramente la condición física y cualquier dispositivo de apoyo que utilice.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">
+                                        <span class="badge bg-secondary me-2">OPCIONAL</span>
+                                        <i class="fas fa-user-tie me-1"></i>
+                                        Cédula del representante legal
+                                    </label>
+                                    <div class="file-upload-wrapper">
+                                        <input type="file" class="file-upload-input" name="documentos[cedula_representante]" accept="image/*,.pdf" id="cedula_representante">
+                                        <label for="cedula_representante" class="file-upload-label">
+                                            <div class="file-upload-content">
+                                                <i class="fas fa-cloud-upload-alt fa-2x mb-2"></i>
+                                                <span class="file-upload-text">Haz clic para seleccionar archivo</span>
+                                                <span class="file-upload-hint">o arrastra y suelta aquí</span>
+                                            </div>
+                                        </label>
+                                        <div class="file-preview" id="cedula_representante-preview"></div>
+                                    </div>
+                                    <small class="text-muted">Formatos: JPG, PNG, PDF (máx. 5MB)</small>
+                                    <div class="document-description">
+                                        <i class="fas fa-info-circle text-info me-1"></i>
+                                        <strong>Descripción:</strong> Fotocopia de la cédula del representante legal (solo si aplica), ambas caras del documento deben ser visibles y legibles.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">
+                                        <span class="badge bg-danger me-2">OBLIGATORIO</span>
+                                        <i class="fas fa-file-alt me-1"></i>
+                                        Hoja de Vida
+                                    </label>
+                                    <div class="file-upload-wrapper">
+                                        <input type="file" class="file-upload-input" name="documentos[hoja_vida]" accept=".pdf,.doc,.docx" required id="hoja_vida">
+                                        <label for="hoja_vida" class="file-upload-label">
+                                            <div class="file-upload-content">
+                                                <i class="fas fa-cloud-upload-alt fa-2x mb-2"></i>
+                                                <span class="file-upload-text">Haz clic para seleccionar archivo</span>
+                                                <span class="file-upload-hint">o arrastra y suelta aquí</span>
+                                            </div>
+                                        </label>
+                                        <div class="file-preview" id="hoja_vida-preview"></div>
+                                    </div>
+                                    <small class="text-muted">Formatos: PDF, DOC, DOCX (máx. 5MB)</small>
+                                    <div class="document-description">
+                                        <i class="fas fa-info-circle text-info me-1"></i>
+                                        <strong>Descripción:</strong> Hoja de vida actualizada del asociado o del representante legal, incluyendo experiencia laboral, educación y referencias personales.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">
+                                        <span class="badge bg-danger me-2">OBLIGATORIO</span>
+                                        <i class="fas fa-certificate me-1"></i>
+                                        Certificado de Discapacidad
+                                    </label>
+                                    <div class="file-upload-wrapper">
+                                        <input type="file" class="file-upload-input" name="documentos[certificado_discapacidad]" accept="image/*,.pdf" required id="certificado_discapacidad">
+                                        <label for="certificado_discapacidad" class="file-upload-label">
+                                            <div class="file-upload-content">
+                                                <i class="fas fa-cloud-upload-alt fa-2x mb-2"></i>
+                                                <span class="file-upload-text">Haz clic para seleccionar archivo</span>
+                                                <span class="file-upload-hint">o arrastra y suelta aquí</span>
+                                            </div>
+                                        </label>
+                                        <div class="file-preview" id="certificado_discapacidad-preview"></div>
+                                    </div>
+                                    <small class="text-muted">Formatos: JPG, PNG, PDF (máx. 5MB)</small>
+                                    <div class="document-description">
+                                        <i class="fas fa-info-circle text-info me-1"></i>
+                                        <strong>Descripción:</strong> Certificado médico oficial que acredite la discapacidad, emitido por una institución de salud autorizada con el porcentaje de discapacidad.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">
+                                        <span class="badge bg-secondary me-2">OPCIONAL</span>
+                                        <i class="fas fa-notes-medical me-1"></i>
+                                        Historia médica
+                                    </label>
+                                    <div class="file-upload-wrapper">
+                                        <input type="file" class="file-upload-input" name="documentos[historia_medica]" accept="image/*,.pdf" id="historia_medica">
+                                        <label for="historia_medica" class="file-upload-label">
+                                            <div class="file-upload-content">
+                                                <i class="fas fa-cloud-upload-alt fa-2x mb-2"></i>
+                                                <span class="file-upload-text">Haz clic para seleccionar archivo</span>
+                                                <span class="file-upload-hint">o arrastra y suelta aquí</span>
+                                            </div>
+                                        </label>
+                                        <div class="file-preview" id="historia_medica-preview"></div>
+                                    </div>
+                                    <small class="text-muted">Formatos: JPG, PNG, PDF (máx. 5MB)</small>
+                                    <div class="document-description">
+                                        <i class="fas fa-info-circle text-info me-1"></i>
+                                        <strong>Descripción:</strong> Historia clínica médica del asociado (solo si aplica), incluyendo diagnósticos, tratamientos y evolución de la condición de salud.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">
+                                        <span class="badge bg-danger me-2">OBLIGATORIO</span>
+                                        <i class="fas fa-clipboard-list me-1"></i>
+                                        Caracterización
+                                    </label>
+                                    <div class="file-upload-wrapper">
+                                        <input type="file" class="file-upload-input" name="documentos[caracterizacion]" accept="image/*,.pdf" required id="caracterizacion">
+                                        <label for="caracterizacion" class="file-upload-label">
+                                            <div class="file-upload-content">
+                                                <i class="fas fa-cloud-upload-alt fa-2x mb-2"></i>
+                                                <span class="file-upload-text">Haz clic para seleccionar archivo</span>
+                                                <span class="file-upload-hint">o arrastra y suelta aquí</span>
+                                            </div>
+                                        </label>
+                                        <div class="file-preview" id="caracterizacion-preview"></div>
+                                    </div>
+                                    <small class="text-muted">Formatos: JPG, PNG, PDF (máx. 5MB)</small>
+                                    <div class="document-description">
+                                        <i class="fas fa-info-circle text-info me-1"></i>
+                                        <strong>Descripción:</strong> Documento de caracterización socioeconómica emitido por entidades oficiales, que determine el nivel socioeconómico del asociado.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">
+                                        <span class="badge bg-danger me-2">OBLIGATORIO</span>
+                                        <i class="fas fa-file-medical me-1"></i>
+                                        SISBEN
+                                    </label>
+                                    <div class="file-upload-wrapper">
+                                        <input type="file" class="file-upload-input" name="documentos[sisben]" accept="image/*,.pdf" required id="sisben">
+                                        <label for="sisben" class="file-upload-label">
+                                            <div class="file-upload-content">
+                                                <i class="fas fa-cloud-upload-alt fa-2x mb-2"></i>
+                                                <span class="file-upload-text">Haz clic para seleccionar archivo</span>
+                                                <span class="file-upload-hint">o arrastra y suelta aquí</span>
+                                            </div>
+                                        </label>
+                                        <div class="file-preview" id="sisben-preview"></div>
+                                    </div>
+                                    <small class="text-muted">Formatos: JPG, PNG, PDF (máx. 5MB)</small>
+                                    <div class="document-description">
+                                        <i class="fas fa-info-circle text-info me-1"></i>
+                                        <strong>Descripción:</strong> Certificado del SISBEN (Sistema de Identificación de Potenciales Beneficiarios de Programas Sociales) con el puntaje actualizado.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">
+                                        <span class="badge bg-danger me-2">OBLIGATORIO</span>
+                                        <i class="fas fa-file-medical me-1"></i>
+                                        FOSYGA
+                                    </label>
+                                    <div class="file-upload-wrapper">
+                                        <input type="file" class="file-upload-input" name="documentos[fosyga]" accept="image/*,.pdf" required id="fosyga">
+                                        <label for="fosyga" class="file-upload-label">
+                                            <div class="file-upload-content">
+                                                <i class="fas fa-cloud-upload-alt fa-2x mb-2"></i>
+                                                <span class="file-upload-text">Haz clic para seleccionar archivo</span>
+                                                <span class="file-upload-hint">o arrastra y suelta aquí</span>
+                                            </div>
+                                        </label>
+                                        <div class="file-preview" id="fosyga-preview"></div>
+                                    </div>
+                                    <small class="text-muted">Formatos: JPG, PNG, PDF (máx. 5MB)</small>
+                                    <div class="document-description">
+                                        <i class="fas fa-info-circle text-info me-1"></i>
+                                        <strong>Descripción:</strong> Certificado del FOSYGA (Fondo de Solidaridad y Garantía) que acredite la afiliación al sistema de seguridad social en salud.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">
+                                        <span class="badge bg-secondary me-2">OPCIONAL</span>
+                                        <i class="fas fa-file-signature me-1"></i>
+                                        Renuncia anterior
+                                    </label>
+                                    <div class="file-upload-wrapper">
+                                        <input type="file" class="file-upload-input" name="documentos[renuncia_anterior]" accept="image/*,.pdf" id="renuncia_anterior">
+                                        <label for="renuncia_anterior" class="file-upload-label">
+                                            <div class="file-upload-content">
+                                                <i class="fas fa-cloud-upload-alt fa-2x mb-2"></i>
+                                                <span class="file-upload-text">Haz clic para seleccionar archivo</span>
+                                                <span class="file-upload-hint">o arrastra y suelta aquí</span>
+                                            </div>
+                                        </label>
+                                        <div class="file-preview" id="renuncia_anterior-preview"></div>
+                                    </div>
+                                    <small class="text-muted">Formatos: JPG, PNG, PDF (máx. 5MB)</small>
+                                    <div class="document-description">
+                                        <i class="fas fa-info-circle text-info me-1"></i>
+                                        <strong>Descripción:</strong> Documento de renuncia a organización anterior (solo si aplica), que acredite que no pertenece a otra organización de personas con discapacidad.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">
+                                        <span class="badge bg-danger me-2">OBLIGATORIO</span>
+                                        <i class="fas fa-handshake me-1"></i>
+                                        Declaración de estatutos
+                                    </label>
+                                    <div class="file-upload-wrapper">
+                                        <input type="file" class="file-upload-input" name="documentos[declaracion_estatutos]" accept=".pdf,.doc,.docx" required id="declaracion_estatutos">
+                                        <label for="declaracion_estatutos" class="file-upload-label">
+                                            <div class="file-upload-content">
+                                                <i class="fas fa-cloud-upload-alt fa-2x mb-2"></i>
+                                                <span class="file-upload-text">Haz clic para seleccionar archivo</span>
+                                                <span class="file-upload-hint">o arrastra y suelta aquí</span>
+                                            </div>
+                                        </label>
+                                        <div class="file-preview" id="declaracion_estatutos-preview"></div>
+                                    </div>
+                                    <small class="text-muted">Formatos: PDF, DOC, DOCX (máx. 5MB)</small>
+                                    <div class="document-description">
+                                        <i class="fas fa-info-circle text-info me-1"></i>
+                                        <strong>Descripción:</strong> Declaración firmada donde el asociado manifiesta conocer y aceptar los estatutos, reglamentos y políticas de la organización.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="alert alert-info">
+                            <i class="fas fa-info-circle me-2"></i>
+                            <strong>Nota:</strong> Los campos marcados con <span class="badge bg-danger">OBLIGATORIO</span> son obligatorios. 
+                            Los campos marcados con <span class="badge bg-secondary">OPCIONAL</span> son opcionales.
+                            Todos los archivos deben tener un tamaño máximo de 5MB.
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -1080,7 +1596,131 @@ if (isset($_GET['logout'])) {
             document.addEventListener('shown.bs.modal', function() {
                 setTimeout(forceStyleUpdate, 100);
             });
+            
+            // Inicializar funcionalidad de carga de archivos
+            initializeFileUploads();
         });
+        
+        // Función para inicializar todos los campos de carga de archivos
+        function initializeFileUploads() {
+            const fileInputs = document.querySelectorAll('.file-upload-input');
+            
+            fileInputs.forEach(input => {
+                const wrapper = input.closest('.file-upload-wrapper');
+                const label = wrapper.querySelector('.file-upload-label');
+                const preview = wrapper.querySelector('.file-preview');
+                
+                // Manejar cambio de archivo
+                input.addEventListener('change', function(e) {
+                    handleFileSelect(this, e.target.files[0]);
+                });
+                
+                // Drag and drop
+                label.addEventListener('dragover', function(e) {
+                    e.preventDefault();
+                    this.classList.add('dragover');
+                });
+                
+                label.addEventListener('dragleave', function(e) {
+                    e.preventDefault();
+                    this.classList.remove('dragover');
+                });
+                
+                label.addEventListener('drop', function(e) {
+                    e.preventDefault();
+                    this.classList.remove('dragover');
+                    const files = e.dataTransfer.files;
+                    if (files.length > 0) {
+                        input.files = files;
+                        handleFileSelect(input, files[0]);
+                    }
+                });
+            });
+        }
+        
+        // Función para manejar la selección de archivos
+        function handleFileSelect(input, file) {
+            if (!file) return;
+            
+            const wrapper = input.closest('.file-upload-wrapper');
+            const preview = wrapper.querySelector('.file-preview');
+            const label = wrapper.querySelector('.file-upload-label');
+            
+            // Validar tamaño (5MB)
+            if (file.size > 5 * 1024 * 1024) {
+                mostrarAlerta('El archivo es demasiado grande. Máximo 5MB.', 'warning');
+                input.value = '';
+                return;
+            }
+            
+            // Validar tipo de archivo
+            const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png', 'application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
+            if (!allowedTypes.includes(file.type)) {
+                mostrarAlerta('Tipo de archivo no permitido. Use JPG, PNG, PDF, DOC o DOCX.', 'warning');
+                input.value = '';
+                return;
+            }
+            
+            // Mostrar preview
+            showFilePreview(preview, file);
+            
+            // Actualizar label
+            label.classList.add('file-selected');
+            label.querySelector('.file-upload-text').textContent = 'Archivo seleccionado';
+            label.querySelector('.file-upload-hint').textContent = file.name;
+        }
+        
+        // Función para mostrar preview del archivo
+        function showFilePreview(preview, file) {
+            const fileSize = (file.size / 1024 / 1024).toFixed(2);
+            const fileIcon = getFileIcon(file.type);
+            
+            preview.innerHTML = `
+                <div class="file-preview-content">
+                    <div class="file-preview-icon">
+                        <i class="${fileIcon}"></i>
+                    </div>
+                    <div class="file-preview-info">
+                        <div class="file-preview-name">${file.name}</div>
+                        <div class="file-preview-size">${fileSize} MB</div>
+                    </div>
+                    <button type="button" class="file-preview-remove" onclick="removeFile(this)">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            `;
+            preview.classList.add('show');
+        }
+        
+        // Función para obtener icono según tipo de archivo
+        function getFileIcon(fileType) {
+            if (fileType.startsWith('image/')) {
+                return 'fas fa-image';
+            } else if (fileType === 'application/pdf') {
+                return 'fas fa-file-pdf';
+            } else if (fileType.includes('word')) {
+                return 'fas fa-file-word';
+            } else {
+                return 'fas fa-file';
+            }
+        }
+        
+        // Función para remover archivo
+        function removeFile(button) {
+            const preview = button.closest('.file-preview');
+            const wrapper = preview.closest('.file-upload-wrapper');
+            const input = wrapper.querySelector('.file-upload-input');
+            const label = wrapper.querySelector('.file-upload-label');
+            
+            input.value = '';
+            preview.classList.remove('show');
+            preview.innerHTML = '';
+            
+            // Restaurar label original
+            label.classList.remove('file-selected');
+            label.querySelector('.file-upload-text').textContent = 'Haz clic para seleccionar archivo';
+            label.querySelector('.file-upload-hint').textContent = 'o arrastra y suelta aquí';
+        }
 
         function eliminarUsuario(id, nombre, apellidos, numeroAsociado) {
             usuarioIdEliminar = id;

@@ -38,6 +38,7 @@ if (!$usuario) {
     <title>Editar Usuario - Familia unida por la discapacidad</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="css/menu-mobile.css" rel="stylesheet">
     <style>
         .sidebar {
             background: linear-gradient(135deg, #FFD700 0%, #DC143C 100%);
@@ -98,6 +99,72 @@ if (!$usuario) {
         }
         
         .btn-close-white {
+        
+        /* Responsive para móviles */
+        @media (max-width: 768px) {
+            .sidebar {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 280px;
+                z-index: 1050;
+                transition: left 0.3s ease;
+            }
+            
+            .sidebar.show {
+                left: 0;
+            }
+            
+            .sidebar-overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.5);
+                z-index: 1040;
+                display: none;
+            }
+            
+            .sidebar-overlay.show {
+                display: block;
+            }
+            
+            #sidebarToggle {
+                background: linear-gradient(135deg, #FFD700 0%, #DC143C 100%);
+                border: none;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+                transition: all 0.3s ease;
+            }
+            
+            #sidebarToggle:hover {
+                transform: scale(1.1);
+                box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            }
+            
+            .main-content {
+                margin-left: 0 !important;
+                width: 100% !important;
+                padding: 1rem;
+            }
+            
+            .container-fluid {
+                padding: 0;
+            }
+            
+            .card {
+                margin-bottom: 1rem;
+            }
+            
+            .form-control, .form-select {
+                font-size: 0.9rem;
+            }
+            
+            .btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
             filter: brightness(0) invert(1);
         }
         
@@ -264,6 +331,16 @@ if (!$usuario) {
 <body>
     <div class="container-fluid">
         <div class="row">
+            <!-- Botón de menú móvil -->
+            <button class="btn btn-primary d-md-none position-fixed" 
+                    id="sidebarToggle" 
+                    style="top: 10px; left: 10px; z-index: 1060; border-radius: 50%; width: 45px; height: 45px;">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <!-- Overlay para móviles -->
+            <div class="sidebar-overlay d-md-none" id="sidebarOverlay"></div>
+            
             <!-- Sidebar -->
             <div class="col-md-3 col-lg-2 px-0">
                 <div class="sidebar p-3">
@@ -577,6 +654,7 @@ if (!$usuario) {
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/menu-mobile.js"></script>
     
     <script>
         // Función para abrir modal de nuevo tipo de discapacidad

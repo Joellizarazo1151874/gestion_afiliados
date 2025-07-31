@@ -13,7 +13,7 @@ define('DB_NAME', 'gestion_usuarios');
 // Configuración de la organización
 define('ORG_NOMBRE', 'Familia unida por la discapacidad');
 define('ORG_DESCRIPCION', 'Sistema de Gestión de Asociados');
-define('ORG_EMAIL', 'admin@familiaunida.com');
+define('ORG_EMAIL', 'familiaunidaporladiscapacidad@gmail.com');
 
 // Configuración del sistema
 define('SYS_VERSION', '1.0.0');
@@ -95,7 +95,8 @@ define('AVAILABLE_LANGUAGES', ['es', 'en']);
 date_default_timezone_set('America/Mexico_City');
 
 // Configuración de errores (solo para desarrollo)
-if ($_SERVER['SERVER_NAME'] === 'localhost' || $_SERVER['SERVER_NAME'] === '127.0.0.1') {
+$server_name = $_SERVER['SERVER_NAME'] ?? 'localhost';
+if ($server_name === 'localhost' || $server_name === '127.0.0.1') {
     error_reporting(E_ALL);
     ini_set('display_errors', 1);
 } else {
@@ -103,10 +104,12 @@ if ($_SERVER['SERVER_NAME'] === 'localhost' || $_SERVER['SERVER_NAME'] === '127.
     ini_set('display_errors', 0);
 }
 
-// Configuración de sesión
-ini_set('session.cookie_httponly', 1);
-ini_set('session.use_only_cookies', 1);
-ini_set('session.cookie_secure', isset($_SERVER['HTTPS']));
+// Configuración de sesión (solo si la sesión no está activa)
+if (session_status() === PHP_SESSION_NONE) {
+    ini_set('session.cookie_httponly', 1);
+    ini_set('session.use_only_cookies', 1);
+    ini_set('session.cookie_secure', isset($_SERVER['HTTPS']));
+}
 
 // Configuración de seguridad adicional
 header('X-Content-Type-Options: nosniff');

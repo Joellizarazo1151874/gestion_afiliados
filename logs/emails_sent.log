@@ -1,0 +1,138 @@
+2025-07-31 01:30:50 | TO: endersonjoellg@ufps.edu.co | SUBJECT: ¡Tu solicitud de afiliación ha sido APROBADA! - Familia unida por la discapacidad
+MESSAGE:
+
+        <html>
+        <head>
+            <style>
+                body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+                .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+                .header { background: linear-gradient(135deg, #FFD700 0%, #DC143C 100%); color: white; padding: 20px; text-align: center; border-radius: 10px 10px 0 0; }
+                .content { background: #f9f9f9; padding: 20px; border-radius: 0 0 10px 10px; }
+                .success-box { background: #d4edda; border: 1px solid #c3e6cb; color: #155724; padding: 15px; border-radius: 5px; margin: 20px 0; }
+                .info-box { background: #d1ecf1; border: 1px solid #bee5eb; color: #0c5460; padding: 15px; border-radius: 5px; margin: 20px 0; }
+                .footer { text-align: center; margin-top: 20px; padding-top: 20px; border-top: 1px solid #ddd; color: #666; font-size: 12px; }
+                .highlight { background: #fff3cd; padding: 10px; border-radius: 5px; margin: 10px 0; }
+            </style>
+        </head>
+        <body>
+            <div class='container'>
+                <div class='header'>
+                    <h1>¡FELICITACIONES!</h1>
+                    <h2>Tu solicitud ha sido APROBADA</h2>
+                </div>
+                
+                <div class='content'>
+                    <p>Estimado/a <strong>Joel Lizarazo</strong>,</p>
+                    
+                    <div class='success-box'>
+                        <h3>🎉 ¡Bienvenido/a a Familia unida por la discapacidad!</h3>
+                        <p>Nos complace informarte que tu solicitud de afiliación ha sido <strong>APROBADA</strong> exitosamente.</p>
+                    </div>
+                    
+                    <div class='info-box'>
+                        <h4>📋 Información de tu afiliación:</h4>
+                        <ul>
+                            <li><strong>Número de Asociado:</strong> ASO000001</li>
+                            <li><strong>Fecha de Aprobación:</strong> 31/07/2025 01:30:46</li>
+                            <li><strong>Estado:</strong> Activo</li>
+                        </ul>
+                    </div>
+                    
+                    <div class='highlight'>
+                        <h4>📝 Detalles de tu solicitud:</h4>
+                        <ul>
+                            <li><strong>Número de Solicitud:</strong> SOL000001</li>
+                            <li><strong>Tipo de Discapacidad:</strong> Discapacidad auditiva</li>
+                            <li><strong>Porcentaje de Discapacidad:</strong> 3%</li>
+                        </ul>
+                    </div>
+                    
+                    <h4>🎯 Próximos pasos:</h4>
+                    <ol>
+                        <li>Recibirás información adicional sobre los beneficios de la asociación</li>
+                        <li>Te contactaremos para coordinar tu participación en actividades</li>
+                        <li>Podrás acceder a todos los servicios y programas disponibles</li>
+                    </ol>
+                    
+                    <p><strong>¡Gracias por confiar en nosotros y bienvenido/a a nuestra familia!</strong></p>
+                    
+                    <p>Atentamente,<br>
+                    <strong>El equipo de Familia unida por la discapacidad</strong></p>
+                </div>
+                
+                <div class='footer'>
+                    <p>Este es un email automático, por favor no respondas a este mensaje.</p>
+                    <p>Para consultas, contáctanos en: admin@familiaunida.com</p>
+                    <p>© 2025 Familia unida por la discapacidad. Todos los derechos reservados.</p>
+                </div>
+            </div>
+        </body>
+        </html>
+--------------------------------------------------------------------------------
+
+2025-07-31 01:30:54 | TO: endersonjoellg@ufps.edu.co | SUBJECT: Información sobre tu solicitud de afiliación - Familia unida por la discapacidad
+MESSAGE:
+
+        <html>
+        <head>
+            <style>
+                body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+                .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+                .header { background: linear-gradient(135deg, #FFD700 0%, #DC143C 100%); color: white; padding: 20px; text-align: center; border-radius: 10px 10px 0 0; }
+                .content { background: #f9f9f9; padding: 20px; border-radius: 0 0 10px 10px; }
+                .info-box { background: #d1ecf1; border: 1px solid #bee5eb; color: #0c5460; padding: 15px; border-radius: 5px; margin: 20px 0; }
+                .footer { text-align: center; margin-top: 20px; padding-top: 20px; border-top: 1px solid #ddd; color: #666; font-size: 12px; }
+            </style>
+        </head>
+        <body>
+            <div class='container'>
+                <div class='header'>
+                    <h1>Información sobre tu solicitud</h1>
+                </div>
+                
+                <div class='content'>
+                    <p>Estimado/a <strong>Joel Lizarazo</strong>,</p>
+                    
+                    <p>Hemos revisado tu solicitud de afiliación y lamentamos informarte que no ha sido aprobada en esta oportunidad.</p>
+                    
+                    <div class='info-box'>
+                        <h4>📋 Detalles de tu solicitud:</h4>
+                        <ul>
+                            <li><strong>Número de Solicitud:</strong> SOL000001</li>
+                            <li><strong>Fecha de Revisión:</strong> 31/07/2025 01:30:50</li>
+                            <li><strong>Estado:</strong> Rechazada</li>
+                        </ul>
+                    </div>
+                    
+                    <h4>📝 Motivo del rechazo:</h4>
+                    <p><em>Documentación incompleta - faltan algunos documentos requeridos</em></p>
+                    
+                    <h4>🔄 ¿Qué puedes hacer?</h4>
+                    <ul>
+                        <li>Revisar y corregir la información según el motivo indicado</li>
+                        <li>Completar la documentación faltante si es necesario</li>
+                        <li>Presentar una nueva solicitud cuando estés listo/a</li>
+                    </ul>
+                    
+                    <p>Si tienes alguna pregunta sobre esta decisión, no dudes en contactarnos.</p>
+                    
+                    <p>Atentamente,<br>
+                    <strong>El equipo de Familia unida por la discapacidad</strong></p>
+                </div>
+                
+                <div class='footer'>
+                    <p>Este es un email automático, por favor no respondas a este mensaje.</p>
+                    <p>Para consultas, contáctanos en: admin@familiaunida.com</p>
+                    <p>© 2025 Familia unida por la discapacidad. Todos los derechos reservados.</p>
+                </div>
+            </div>
+        </body>
+        </html>
+--------------------------------------------------------------------------------
+
+[2025-07-31 02:00:48] [EXITOSO] [Aprobación de solicitud] -> endersonjoellg@ufps.edu.co
+[2025-07-31 09:24:10] [ERROR] [Aprobación] Enviado a: endersonjoellg@ufps.edu.co - Error: SMTP Error: Could not authenticate.
+[2025-07-31 09:27:17] [ERROR] [Aprobación] Enviado a: endersonlizarazo3@gmail.com - Error: SMTP Error: Could not authenticate.
+[2025-07-31 09:36:11] [EXITOSO] [Aprobación] Enviado a: endersonjoellg@ufps.edu.co
+[2025-07-31 09:41:03] [EXITOSO] [Aprobación] Enviado a: endersonlizarazo3@gmail.com
+[2025-07-31 09:50:41] [EXITOSO] [Rechazo] Enviado a: endersonlizarazo6@gmail.com
