@@ -1,9 +1,8 @@
--- phpMyAdmin SQL Dump
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 31-07-2025 a las 01:19:08
+-- Tiempo de generación: 31-07-2025 a las 18:18:06
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -41,7 +40,7 @@ CREATE TABLE `administradores` (
 --
 
 INSERT INTO `administradores` (`id`, `usuario`, `password`, `nombre`, `email`, `fecha_creacion`) VALUES
-(1, 'admin', '$2y$10$Rr3DoC91D1UoESoa8CqOWeA/qpzCs/7PFQ0R0UuMoW4xLL69LpWf.', 'Administrador', 'endersonlizarazo3@gmail.com', '2025-07-29 21:56:08');
+(1, 'admin', '$2y$10$Rr3DoC91D1UoESoa8CqOWeA/qpzCs/7PFQ0R0UuMoW4xLL69LpWf.', 'Administrador', 'familiaunidaporladiscapacidad@gmail.com', '2025-07-29 21:56:08');
 
 -- --------------------------------------------------------
 
@@ -59,6 +58,40 @@ CREATE TABLE `documentos_solicitudes` (
   `estado` enum('Pendiente','Aprobado','Rechazado') DEFAULT 'Pendiente',
   `observaciones` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `documentos_solicitudes`
+--
+
+INSERT INTO `documentos_solicitudes` (`id`, `solicitud_id`, `tipo_documento`, `nombre_archivo`, `ruta_archivo`, `fecha_carga`, `estado`, `observaciones`) VALUES
+(170, 28, 'foto_carnet', '688b8d59b5293_foto_carnet.jpg', 'uploads/documentos_solicitudes/688b8d59b5293_foto_carnet.jpg', '2025-07-31 15:35:53', 'Pendiente', NULL),
+(171, 28, 'cedula_asociado', '688b8d59b5d67_cedula_asociado.jpg', 'uploads/documentos_solicitudes/688b8d59b5d67_cedula_asociado.jpg', '2025-07-31 15:35:53', 'Pendiente', NULL),
+(172, 28, 'foto_cuerpo', '688b8d59b6706_foto_cuerpo.jpg', 'uploads/documentos_solicitudes/688b8d59b6706_foto_cuerpo.jpg', '2025-07-31 15:35:53', 'Pendiente', NULL),
+(173, 28, 'hoja_vida', '688b8d59b6e83_hoja_vida.docx', 'uploads/documentos_solicitudes/688b8d59b6e83_hoja_vida.docx', '2025-07-31 15:35:53', 'Pendiente', NULL),
+(174, 28, 'certificado_discapacidad', '688b8d59b7654_certificado_discapacidad.jpg', 'uploads/documentos_solicitudes/688b8d59b7654_certificado_discapacidad.jpg', '2025-07-31 15:35:53', 'Pendiente', NULL),
+(175, 28, 'caracterizacion', '688b8d59b7e88_caracterizacion.jpg', 'uploads/documentos_solicitudes/688b8d59b7e88_caracterizacion.jpg', '2025-07-31 15:35:53', 'Pendiente', NULL),
+(176, 28, 'sisben', '688b8d59b85af_sisben.png', 'uploads/documentos_solicitudes/688b8d59b85af_sisben.png', '2025-07-31 15:35:53', 'Pendiente', NULL),
+(177, 28, 'fosyga', '688b8d59b8cfe_fosyga.jpg', 'uploads/documentos_solicitudes/688b8d59b8cfe_fosyga.jpg', '2025-07-31 15:35:53', 'Pendiente', NULL),
+(178, 28, 'declaracion_estatutos', '688b8d59b95a9_declaracion_estatutos.docx', 'uploads/documentos_solicitudes/688b8d59b95a9_declaracion_estatutos.docx', '2025-07-31 15:35:53', 'Pendiente', NULL),
+(179, 29, 'foto_carnet', '688b8e7c6766d_foto_carnet.jpg', 'uploads/documentos_solicitudes/688b8e7c6766d_foto_carnet.jpg', '2025-07-31 15:40:44', 'Pendiente', NULL),
+(180, 29, 'cedula_asociado', '688b8e7c67ee5_cedula_asociado.png', 'uploads/documentos_solicitudes/688b8e7c67ee5_cedula_asociado.png', '2025-07-31 15:40:44', 'Pendiente', NULL),
+(181, 29, 'foto_cuerpo', '688b8e7c686d7_foto_cuerpo.jpg', 'uploads/documentos_solicitudes/688b8e7c686d7_foto_cuerpo.jpg', '2025-07-31 15:40:44', 'Pendiente', NULL),
+(182, 29, 'hoja_vida', '688b8e7c68f41_hoja_vida.docx', 'uploads/documentos_solicitudes/688b8e7c68f41_hoja_vida.docx', '2025-07-31 15:40:44', 'Pendiente', NULL),
+(183, 29, 'certificado_discapacidad', '688b8e7c696a3_certificado_discapacidad.jpg', 'uploads/documentos_solicitudes/688b8e7c696a3_certificado_discapacidad.jpg', '2025-07-31 15:40:44', 'Pendiente', NULL),
+(184, 29, 'historia_medica', '688b8e7c69e45_historia_medica.jpg', 'uploads/documentos_solicitudes/688b8e7c69e45_historia_medica.jpg', '2025-07-31 15:40:44', 'Pendiente', NULL),
+(185, 29, 'caracterizacion', '688b8e7c6a937_caracterizacion.jpg', 'uploads/documentos_solicitudes/688b8e7c6a937_caracterizacion.jpg', '2025-07-31 15:40:44', 'Pendiente', NULL),
+(186, 29, 'sisben', '688b8e7c6b163_sisben.jpg', 'uploads/documentos_solicitudes/688b8e7c6b163_sisben.jpg', '2025-07-31 15:40:44', 'Pendiente', NULL),
+(187, 29, 'fosyga', '688b8e7c6b959_fosyga.jpg', 'uploads/documentos_solicitudes/688b8e7c6b959_fosyga.jpg', '2025-07-31 15:40:44', 'Pendiente', NULL),
+(188, 29, 'declaracion_estatutos', '688b8e7c6c1ba_declaracion_estatutos.docx', 'uploads/documentos_solicitudes/688b8e7c6c1ba_declaracion_estatutos.docx', '2025-07-31 15:40:44', 'Pendiente', NULL),
+(189, 30, 'foto_carnet', '688b90b053ab7_foto_carnet.jpg', 'uploads/documentos_solicitudes/688b90b053ab7_foto_carnet.jpg', '2025-07-31 15:50:08', 'Pendiente', NULL),
+(190, 30, 'cedula_asociado', '688b90b054420_cedula_asociado.jpg', 'uploads/documentos_solicitudes/688b90b054420_cedula_asociado.jpg', '2025-07-31 15:50:08', 'Pendiente', NULL),
+(191, 30, 'foto_cuerpo', '688b90b054cfb_foto_cuerpo.jpg', 'uploads/documentos_solicitudes/688b90b054cfb_foto_cuerpo.jpg', '2025-07-31 15:50:08', 'Pendiente', NULL),
+(192, 30, 'hoja_vida', '688b90b055607_hoja_vida.docx', 'uploads/documentos_solicitudes/688b90b055607_hoja_vida.docx', '2025-07-31 15:50:08', 'Pendiente', NULL),
+(193, 30, 'certificado_discapacidad', '688b90b055e38_certificado_discapacidad.jpg', 'uploads/documentos_solicitudes/688b90b055e38_certificado_discapacidad.jpg', '2025-07-31 15:50:08', 'Pendiente', NULL),
+(194, 30, 'caracterizacion', '688b90b0566f7_caracterizacion.jpg', 'uploads/documentos_solicitudes/688b90b0566f7_caracterizacion.jpg', '2025-07-31 15:50:08', 'Pendiente', NULL),
+(195, 30, 'sisben', '688b90b056f80_sisben.png', 'uploads/documentos_solicitudes/688b90b056f80_sisben.png', '2025-07-31 15:50:08', 'Pendiente', NULL),
+(196, 30, 'fosyga', '688b90b0577c7_fosyga.jpg', 'uploads/documentos_solicitudes/688b90b0577c7_fosyga.jpg', '2025-07-31 15:50:08', 'Pendiente', NULL),
+(197, 30, 'declaracion_estatutos', '688b90b057f36_declaracion_estatutos.docx', 'uploads/documentos_solicitudes/688b90b057f36_declaracion_estatutos.docx', '2025-07-31 15:50:08', 'Pendiente', NULL);
 
 -- --------------------------------------------------------
 
@@ -104,6 +137,15 @@ CREATE TABLE `solicitudes_afiliacion` (
   `motivo_rechazo` text DEFAULT NULL,
   `revisado_por` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `solicitudes_afiliacion`
+--
+
+INSERT INTO `solicitudes_afiliacion` (`id`, `numero_solicitud`, `nombre`, `apellidos`, `fecha_nacimiento`, `genero`, `tipo_discapacidad`, `porcentaje_discapacidad`, `telefono`, `email`, `direccion`, `ciudad`, `codigo_postal`, `observaciones`, `estado`, `fecha_solicitud`, `fecha_revision`, `motivo_rechazo`, `revisado_por`) VALUES
+(28, 'SOL000001', 'Joel', 'Lizarazo', '2025-07-16', 'Masculino', 'Discapacidad del habla', 34, '3209939817', 'endersonjoellg@ufps.edu.co', 'calle 8 # 14 - 56 Barrio gramalote / Villa del rosario', 'Villa Del Rosario', '541030', '', 'Aprobada', '2025-07-31 15:35:53', '2025-07-31 15:36:08', NULL, 1),
+(29, 'SOL000002', 'Joel2', 'Lizarazo2', '2025-07-08', 'Masculino', 'Discapacidad del habla', 2, '3209939817', 'endersonlizarazo3@gmail.com', 'calle 8 # 14 - 56 Barrio gramalote / Villa del rosario', 'Villa Del Rosario', '541030', '', 'Aprobada', '2025-07-31 15:40:44', '2025-07-31 15:41:00', NULL, 1),
+(30, 'SOL000003', 'Joel', 'Lizarazo', '2025-07-14', 'Masculino', 'Discapacidad intelectual', 2, '3209939817', 'endersonlizarazo6@gmail.com', 'calle 8 # 14 - 56 Barrio gramalote / Villa del rosario', 'Villa Del Rosario', '541030', '', 'Rechazada', '2025-07-31 15:50:08', '2025-07-31 15:50:39', 'Documentos incompletos o erroneos', 1);
 
 -- --------------------------------------------------------
 
@@ -164,6 +206,14 @@ CREATE TABLE `usuarios` (
   `fecha_registro` timestamp NOT NULL DEFAULT current_timestamp(),
   `fecha_actualizacion` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`id`, `numero_asociado`, `nombre`, `apellidos`, `fecha_nacimiento`, `genero`, `tipo_discapacidad`, `porcentaje_discapacidad`, `telefono`, `email`, `direccion`, `ciudad`, `codigo_postal`, `fecha_afiliacion`, `estado`, `observaciones`, `fecha_registro`, `fecha_actualizacion`) VALUES
+(30, 'ASO000001', 'Joel', 'Lizarazo', '2025-07-16', 'Masculino', 'Discapacidad del habla', 34, '3209939817', 'endersonjoellg@ufps.edu.co', 'calle 8 # 14 - 56 Barrio gramalote / Villa del rosario', 'Villa Del Rosario', '541030', '2025-07-31', 'Activo', '', '2025-07-31 15:36:08', '2025-07-31 15:36:08'),
+(31, 'ASO000002', 'Joel2', 'Lizarazo2', '2025-07-08', 'Masculino', 'Discapacidad del habla', 2, '3209939817', 'endersonlizarazo3@gmail.com', 'calle 8 # 14 - 56 Barrio gramalote / Villa del rosario', 'Villa Del Rosario', '541030', '2025-07-31', 'Activo', '', '2025-07-31 15:41:00', '2025-07-31 15:41:00');
 
 --
 -- Índices para tablas volcadas
@@ -236,19 +286,19 @@ ALTER TABLE `administradores`
 -- AUTO_INCREMENT de la tabla `documentos_solicitudes`
 --
 ALTER TABLE `documentos_solicitudes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=198;
 
 --
 -- AUTO_INCREMENT de la tabla `documentos_usuarios`
 --
 ALTER TABLE `documentos_usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=175;
 
 --
 -- AUTO_INCREMENT de la tabla `solicitudes_afiliacion`
 --
 ALTER TABLE `solicitudes_afiliacion`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT de la tabla `tipos_documentos`
@@ -260,7 +310,7 @@ ALTER TABLE `tipos_documentos`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- Restricciones para tablas volcadas
