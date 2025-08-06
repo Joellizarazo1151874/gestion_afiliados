@@ -9,6 +9,13 @@ if (!isset($_SESSION['admin_id'])) {
     exit;
 }
 
+// Procesar logout
+if (isset($_GET['logout'])) {
+    session_destroy();
+    header('Location: login.php');
+    exit();
+}
+
 require_once dirname(__DIR__) . '/config.php';
 require_once dirname(__DIR__) . '/controlador/SolicitudController.php';
 
@@ -576,7 +583,7 @@ $estadisticas = $controller->obtenerEstadisticas();
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="logout.php">
+                            <a class="nav-link" href="index.php?logout=1">
                                 <i class="fas fa-sign-out-alt me-2"></i>Cerrar Sesión
                             </a>
                         </li>

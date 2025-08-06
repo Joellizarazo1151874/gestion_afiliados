@@ -13,7 +13,7 @@ define('DB_NAME', 'gestion_usuarios');
 // Configuración de la organización
 define('ORG_NOMBRE', 'Familia unida por la discapacidad');
 define('ORG_DESCRIPCION', 'Sistema de Gestión de Asociados');
-define('ORG_EMAIL', 'familiaunidaporladiscapacidad@gmail.com');
+define('ORG_EMAIL', 'familiaunidadiscapacidad@gmail.com');
 
 // Configuración del sistema
 define('SYS_VERSION', '1.0.0');
